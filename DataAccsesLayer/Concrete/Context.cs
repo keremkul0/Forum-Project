@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete
 {
-    public class Context:IdentityDbContext
+    public class Context : IdentityDbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -27,22 +27,21 @@ namespace DataAccessLayer.Concrete
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Comment>()
-            .HasOne(comment => comment.User)
-            .WithMany(g => g.Comments)
-            .HasForeignKey(s => s.UserId);
+            .HasOne(m => m.User)
+            .WithMany(p => p.Comments)
+            .HasForeignKey(m => m.UserId);
+
+            modelBuilder.Entity<Headline>()
+            .HasOne(m => m.User)
+            .WithMany(p => p.Headlines)
+            .HasForeignKey(m => m.UserId);
 
             modelBuilder.Entity<Comment>()
-           .HasOne(comment => comment.Headline)
-           .WithMany(g => g.Comments)
-           .HasForeignKey(s => s.HeadlineId);
-
-
-            modelBuilder.Entity<User>()
-            .HasOne(comment => comment.Headlines)
-            .WithMany(g => g.h)
-            .HasForeignKey(s => s.UserId);
+            .HasOne(m => m.Headline)
+            .WithMany(p => p.Comments)
+            .HasForeignKey(m => m.HeadlineId);
 
         }
     }
-   
+
 }
