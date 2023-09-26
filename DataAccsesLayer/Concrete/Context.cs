@@ -11,14 +11,13 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete
 {
-    public class Context : IdentityDbContext
+    public class Context : IdentityDbContext<User,UserRole,int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer("server=KEREM\\SQLEXPRESS;database=BenimProjem;integrated security=true; TrustServerCertificate=True");
         }
-        public DbSet<User> User { get; set; }
         public DbSet<Comment> Comment { get; set; }
         public DbSet<Headline> Headline { get; set; }
 
@@ -29,19 +28,21 @@ namespace DataAccessLayer.Concrete
             modelBuilder.Entity<Comment>()
             .HasOne(m => m.User)
             .WithMany(p => p.Comments)
-            .HasForeignKey(m => m.UserId);
+            .HasForeignKey(m => m.UserId)
+            .OnDelete(DeleteBehavior.ClientSetNull);
+            
 
             modelBuilder.Entity<Headline>()
             .HasOne(m => m.User)
             .WithMany(p => p.Headlines)
-            .HasForeignKey(m => m.UserId);
+            .HasForeignKey(m => m.UserId)
+            .OnDelete(DeleteBehavior.ClientSetNull);
 
             modelBuilder.Entity<Comment>()
             .HasOne(m => m.Headline)
             .WithMany(p => p.Comments)
-            .HasForeignKey(m => m.HeadlineId);
-
+            .HasForeignKey(m => m.HeadlineId)
+            .OnDelete(DeleteBehavior.ClientSetNull);
         }
     }
-
 }
