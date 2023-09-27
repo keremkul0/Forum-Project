@@ -3,20 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BenimProjem", "BenimProjem\BenimProjem.csproj", "{3456A6AC-C6AD-416D-9399-B6633DFF447D}"
-	ProjectSection(ProjectDependencies) = postProject
-		{4F468496-1794-4DD2-BA17-EBFE4F1C5C09} = {4F468496-1794-4DD2-BA17-EBFE4F1C5C09}
-		{95E22931-A3B3-42F3-8092-50E791CC1DEF} = {95E22931-A3B3-42F3-8092-50E791CC1DEF}
-		{B8304A75-37D2-47E7-A777-F8FCC8F55585} = {B8304A75-37D2-47E7-A777-F8FCC8F55585}
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityLayer", "EntityLayer\EntityLayer.csproj", "{B8304A75-37D2-47E7-A777-F8FCC8F55585}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccsesLayer\DataAccessLayer.csproj", "{95E22931-A3B3-42F3-8092-50E791CC1DEF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{4F468496-1794-4DD2-BA17-EBFE4F1C5C09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenimProjem.UI", "BenimProjem.UI\BenimProjem.UI.csproj", "{4D34FE79-BF2B-4735-95AB-4C1D9073956D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BenimProjem.UI", "BenimProjem.UI\BenimProjem.UI.csproj", "{4D34FE79-BF2B-4735-95AB-4C1D9073956D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3456A6AC-C6AD-416D-9399-B6633DFF447D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3456A6AC-C6AD-416D-9399-B6633DFF447D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3456A6AC-C6AD-416D-9399-B6633DFF447D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3456A6AC-C6AD-416D-9399-B6633DFF447D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B8304A75-37D2-47E7-A777-F8FCC8F55585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B8304A75-37D2-47E7-A777-F8FCC8F55585}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8304A75-37D2-47E7-A777-F8FCC8F55585}.Release|Any CPU.ActiveCfg = Release|Any CPU
