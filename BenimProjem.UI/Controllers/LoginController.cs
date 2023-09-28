@@ -28,7 +28,7 @@ namespace BenimProjem.UI.Controllers
         {
             User user = new User()
             {
-                UserName = p.UserName,
+                UserName = p.Username,
                 Email = p.Email,
                 Gender = p.Gender,
             };
@@ -37,7 +37,7 @@ namespace BenimProjem.UI.Controllers
                 var result = await _userManager.CreateAsync(user, p.Password);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("SignIn");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -48,6 +48,31 @@ namespace BenimProjem.UI.Controllers
                 }
             }
             return View(p);
+        }
+
+
+        [HttpGet]
+        public IActionResult SignIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SignIn(UserSignInViewModel p)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(p.Username, p.Password, false, true);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return RedirectToAction("SignIn", "login");
+                }
+            }
+            return View();
         }
     }
 }

@@ -5,7 +5,7 @@ namespace BenimProjem.UI.Models
     public class UserRegisterViewModel
     {
         [Required(ErrorMessage = "Please enter your name")]
-        public string UserName { get; set; } = string.Empty;
+        public string Username { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Please enter your email")]
         public string Email { get; set; } = string.Empty;
@@ -16,7 +16,7 @@ namespace BenimProjem.UI.Models
         public string Gender { get; set; } = "Do not want to specify";
 
         [Required(ErrorMessage = "Please Enter Your password")]
-        public string Password = string.Empty;
+        public string Password { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Please Enter Your Password Again")]
         [Compare("Password", ErrorMessage = "Passwords do not match")]
