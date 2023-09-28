@@ -37,8 +37,8 @@ namespace BenimProjem.UI.Controllers
                 var result = await _userManager.CreateAsync(user, p.Password);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
-                }
+					return RedirectToAction("SignIn", "login");
+				}
                 else
                 {
                     foreach (var item in result.Errors)
