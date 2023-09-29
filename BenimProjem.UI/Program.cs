@@ -1,7 +1,10 @@
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Extensions = BusinessLayer.Container.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<Context>();
 builder.Services.AddIdentity<User, UserRole>().AddEntityFrameworkStores<Context>();
 builder.Services.AddControllersWithViews();
-
+//builder.Services.AddScoped<IHeadlineService, HeadlineManager>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

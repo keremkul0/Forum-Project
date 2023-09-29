@@ -1,4 +1,5 @@
 ﻿using BenimProjem.UI.Models;
+using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -11,7 +12,6 @@ namespace BenimProjem.UI.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-
         public LoginController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;

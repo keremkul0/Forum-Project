@@ -1,4 +1,6 @@
 ﻿using BenimProjem.UI.Models;
+using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,15 +9,19 @@ namespace BenimProjem.UI.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IHeadlineService _headlineService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IHeadlineService headlineService)
         {
             _logger = logger;
+            _headlineService = headlineService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var headlineList = _headlineService.TGetAll();
+                
+            return View(new HeadlineCommentViewModel { HeadlineList= headlineList });
         }
 
         public IActionResult Privacy()
