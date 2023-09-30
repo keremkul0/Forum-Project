@@ -11,7 +11,7 @@ namespace BenimProjem.UI.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IHeadlineService _headlineService;
         private readonly ICommentService _commentService;
-        public HomeController(ILogger<HomeController> logger, IHeadlineService headlineService,ICommentService commentService)
+        public HomeController(ILogger<HomeController> logger, IHeadlineService headlineService, ICommentService commentService)
         {
             _logger = logger;
             _headlineService = headlineService;
@@ -22,7 +22,16 @@ namespace BenimProjem.UI.Controllers
         {
             var headlineList = _headlineService.TGetAll();
             var commentList = _commentService.TGetAll();
-            return View(new HeadlineCommentViewModel { HeadlineList= headlineList , CommentList= commentList });
+
+            HeadlineCommentViewModel headlineCommentViewModel = new();
+
+            foreach (var headline in headlineList)
+            {
+                var comments = commentList.Where(c => c.HeadlineId == headline.HeadlineId).ToList();
+                headline.Comments = comments;
+            }
+            headlineCommentViewModel.HeadlineList = headlineList;
+            return View(headlineCommentViewModel);
         }
 
         public IActionResult Privacy()
