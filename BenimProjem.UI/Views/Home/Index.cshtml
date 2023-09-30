@@ -75,6 +75,36 @@
 
   <main id="main">
         <section id="about" class="about">
+
+            <div class="col-xl-7 d-flex align-items-stretch">
+                <div class=" d-flex flex-column justify-content-center">
+                    <div class="row">
+                        <div class="col-md-6 " data-aos="fade-up" data-aos-delay="100">
+                            <div class="content">
+                                @if (Model.HeadlineList != null)
+                                {
+                                    @foreach (var HeadLine in Model.HeadlineList)
+                                    {
+                                        <h3>@HeadLine.Context</h3>
+
+                                        @if (HeadLine.Comments != null)
+                                        {
+                                            @foreach (var Comment in HeadLine.Comments)
+                                            {
+                                                <p>@Comment.CommentText</p>
+                                            }
+                                        }
+                                        <a href="#" class="about-btn">About us <i class="bx bx-chevron-right"></i></a>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End .content-->
+            </div>
+
+
+
             <div class="container">
                 <div class="row justify-content-center">
                     @if (Model != null)
@@ -83,11 +113,37 @@
                         {
                             <h3>@item.Context</h3>
 
+<<<<<<< Updated upstream
                             <p>
                                 @Model.CommentList.First().CommentText
                             </p>
                         }
                     }
+=======
+                <div class="row no-gutters">
+                    <div class="content col-xl-5 d-flex align-items-center center-content" data-aos="fade-up">
+
+                        <div class="content">
+                            @if (Model.HeadlineList != null)
+                            {
+                                @foreach (var HeadLine in Model.HeadlineList)
+                                {
+                                    <h3>@HeadLine.Context</h3>
+
+                                    @if (HeadLine.Comments != null)
+                                    {
+                                        @foreach (var Comment in HeadLine.Comments)
+                                        {
+                                            <p>@Comment.CommentText</p>
+                                        }
+                                    }
+                                    <a href="#" class="about-btn">About us <i class="bx bx-chevron-right"></i></a>
+                                }
+                            }  
+                        </div>
+                    </div>
+                 
+>>>>>>> Stashed changes
                 </div>
             </div>
         </section>
@@ -183,4 +239,3 @@
   <script src="~/Squadfree/assets/js/main.js"></script>
 
 </body>
-
