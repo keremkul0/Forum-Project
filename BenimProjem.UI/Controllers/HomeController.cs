@@ -22,7 +22,6 @@ namespace BenimProjem.UI.Controllers
         {
             var headlineList = _headlineService.TGetAll();
             var commentList = _commentService.TGetAll();
-
             HeadlineCommentViewModel headlineCommentViewModel = new();
 
             foreach (var headline in headlineList)
