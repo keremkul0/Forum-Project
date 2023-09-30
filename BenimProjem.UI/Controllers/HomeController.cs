@@ -10,18 +10,19 @@ namespace BenimProjem.UI.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IHeadlineService _headlineService;
-
-        public HomeController(ILogger<HomeController> logger, IHeadlineService headlineService)
+        private readonly ICommentService _commentService;
+        public HomeController(ILogger<HomeController> logger, IHeadlineService headlineService,ICommentService commentService)
         {
             _logger = logger;
             _headlineService = headlineService;
+            _commentService = commentService;
         }
 
         public IActionResult Index()
         {
             var headlineList = _headlineService.TGetAll();
-                
-            return View(new HeadlineCommentViewModel { HeadlineList= headlineList });
+            var commentList = _commentService.TGetAll();
+            return View(new HeadlineCommentViewModel { HeadlineList= headlineList , CommentList= commentList });
         }
 
         public IActionResult Privacy()
