@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,16 @@ namespace BusinessLayer.Concrete
         public void TUpdate(Headline t)
         {
             _HeadlineDal.Update(t);
+        }
+
+        public List<Headline> GetHeadLinesWithComments()
+        {
+            return _HeadlineDal.GetHeadLinesWithComments();
+        }
+
+        public Headline GetHeadlineComments(int id)
+        {
+            return _HeadlineDal.GetHeadlineComments(id);
         }
     }
 }

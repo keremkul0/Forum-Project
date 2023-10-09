@@ -9,5 +9,7 @@ namespace BusinessLayer.Abstract
 {
     public interface IHeadlineService:IGenericService<Headline>
     {
+        List<Headline> GetHeadLinesWithComments();
+        Headline GetHeadlineComments(int id);
     }
 }

@@ -17,21 +17,13 @@ namespace BenimProjem.UI.Controllers
             _headlineService = headlineService;
             _commentService = commentService;
         }
-
+        [HttpGet] 
         public IActionResult Index()
         {
-            var headlineList = _headlineService.TGetAll();
-            var commentList = _commentService.TGetAll();
-            HeadlineCommentViewModel headlineCommentViewModel = new();
-
-            foreach (var headline in headlineList)
-            {
-                var comments = commentList.Where(c => c.HeadlineId == headline.HeadlineId).ToList();
-                headline.Comments = comments;
-            }
-            headlineCommentViewModel.HeadlineList = headlineList;
-            return View(headlineCommentViewModel);
+            var headlineList = _headlineService.GetHeadLinesWithComments();
+            return View(headlineList);
         }
+
 
         public IActionResult Privacy()
         {

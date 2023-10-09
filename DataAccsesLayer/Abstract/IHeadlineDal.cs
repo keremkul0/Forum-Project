@@ -9,5 +9,7 @@ namespace DataAccessLayer.Abstract
 {
     public interface IHeadlineDal:IGenericDal<Headline>
     {
+        List<Headline> GetHeadLinesWithComments();
+        Headline GetHeadlineComments(int id);
     }
 }

@@ -1,7 +1,6 @@
 ﻿@using EntityLayer.Concrete;
-@model List<Headline>
+@model Headline
 @{
-    ViewData["Title"] = "Home Page";
     Layout = null;
 }
 
@@ -9,44 +8,39 @@
 
     @await Html.PartialAsync("~/Views/LayoutPartial/Head.cshtml")
 
-    <link href="~/Squadfree/assets/css/style.css" rel="stylesheet">
+    <link href="~/Squadfree/assets/css/HeadlineStyle.css" rel="stylesheet">
 
 </head>
 
-
 <body>
-    <link href="~/Squadfree/assets/css/HeadlineStyle.css" rel="stylesheet">
-    @await Html.PartialAsync("~/Views/LayoutPartial/Header.cshtml")
-  <!-- ======= Hero Section ======= -->
-  <section id="hero">
-    <div class="hero-container" data-aos="fade-up">
-      <h1>Welcome to Squad</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
-      <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
-    </div>
-  </section><!-- End Hero -->
 
-  <main id="main">
+    @await Html.PartialAsync("~/Views/LayoutPartial/Header.cshtml")
+ 
+    <section id="hero">
+       @*  <div class="hero-container" data-aos="fade-up">
+            <h1>Welcome to Squad</h1>
+            <h2>We are team of talented designers making websites with Bootstrap</h2>
+            <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+        </div> *@
+    </section><!-- End Hero -->
+
+    <main id="main">
         <section id="about" class="about">
             <div class="container">
                 <div class="row justify-content-left">
-                    
-                    @if (Model!= null)
+
+                    <h3><a href="~/Views/HeadlinePage/Index?id=@Model.HeadlineId" class="about-btn">@Model.Context</a></h3>
+
+                    @if (Model.Comments != null)
                     {
-                        @foreach (var HeadLine in Model)
+                        @foreach(var item in Model.Comments)
                         {
-                            <h3><a href="/HeadlinePage/Index?id=@HeadLine.HeadlineId" class="about-btn">@HeadLine.Context</a></h3>
-
-                            @if (HeadLine.Comments != null)
-                            {
-                                <p>@HeadLine.Comments.First().CommentText</p>
-
-                            }
-                            <a href="#" class="about-btn">About us <i class="bx bx-chevron-right"></i></a>
+                            <p>@item.CommentText</p>
+                            <br />
+                            <br />
                         }
                     }
-
-
+ 
                 </div>
             </div>
         </section>
@@ -127,19 +121,20 @@
         </footer><!-- End Footer -->
     </main>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="~/Squadfree/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="~/Squadfree/assets/vendor/aos/aos.js"></script>
-  <script src="~/Squadfree/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="~/Squadfree/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="~/Squadfree/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="~/Squadfree/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="~/Squadfree/assets/vendor/php-email-form/validate.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="~/Squadfree/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="~/Squadfree/assets/vendor/aos/aos.js"></script>
+    <script src="~/Squadfree/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Squadfree/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/Squadfree/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Squadfree/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Squadfree/assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="~/Squadfree/assets/js/main.js"></script>
+    <!-- Template Main JS File -->
+    <script src="~/Squadfree/assets/js/main.js"></script>
 
 </body>
+
 
